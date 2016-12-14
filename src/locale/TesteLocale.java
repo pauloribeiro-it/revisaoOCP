@@ -10,13 +10,10 @@ import java.util.ResourceBundle;
 public class TesteLocale {
 	private static final Locale locale = new Locale("fr","CA");
 	public static void main(String[] args) {
-//		ResourceBundle resourceBundle = ResourceBundle.getBundle("bundles.teste",locale);
-//		System.out.println(resourceBundle.getString("bundle2"));
-		ResourceBundle resourceJava = ResourceBundle.getBundle("bundles.TesteBundleJava");
-		System.out.println(resourceJava.getString("paulo"));
-//		obtemDatePadrao();
-//		obtemCurrencyPadrao();
-//		dataComCalendar();
+//		ResourceBundle resourceJava = ResourceBundle.getBundle("bundles.TesteBundleJava");
+//		System.out.println(resourceJava.getString("paulo"));
+		ResourceBundle resource = ResourceBundle.getBundle("bundles.teste",new Locale("en"));
+		System.out.println(resource.getString("bundle1"));
 	}
 
 	public static void obtemDatePadrao() {

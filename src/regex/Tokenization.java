@@ -8,8 +8,9 @@ public class Tokenization {
 //		String padraoSilabico = "ab";
 //		String padraoNumerico = "\\b";
 		
-//		buscaRegex(padraoSilabico, "abbaab");
-		regexNumeroHexadecimal("12 0x 0x12 0Xf 0xg");
+		buscaRegex("\\B", "ab.34ef");
+		"45d".split("\\d");
+//		regexNumeroHexadecimal("12 0x 0x12 0Xf 0xg");
 //		buscaRegex(padraoNumerico, ".2w w$ a#w2");
 	}
 	
@@ -17,7 +18,7 @@ public class Tokenization {
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(texto);
 		while(m.find())
-			System.out.print(m.start()+"\t");
+			System.out.println(m.start()+"\t"+m.group());
 	}
 	
 	public static void regexNumeroHexadecimal(String texto){
