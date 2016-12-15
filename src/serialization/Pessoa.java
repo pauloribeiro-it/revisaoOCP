@@ -8,6 +8,7 @@ public class Pessoa implements Serializable{
 	private String nome;
 	private Integer idade;
 	private String sexo;
+	private Teste t = new Teste();
 	
 	public Pessoa(){
 		this.sexo="F";
@@ -41,3 +42,4 @@ public class Pessoa implements Serializable{
 	}
 	
 }
+class Teste{}
