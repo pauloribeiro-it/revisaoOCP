@@ -1,13 +1,15 @@
 package files;
 
+import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class NIO {
-	public static void main(String[] args) {
-		verificaExistenciaArquivo();
+	public static void main(String[] args) throws IOException {
+//		verificaExistenciaArquivo();
+		createFile();
 	}
 	
 	public static void verificaExistenciaArquivo(){
@@ -19,6 +21,12 @@ public class NIO {
 		System.out.println(Files.exists(arquivo1));
 		System.out.println(Files.exists(arquivo2));
 		System.out.println(Files.exists(arquivo3));
-		
+	}
+	
+	public static void createFile() throws IOException{
+		String path = "C:\\Users\\Paulo\\Desktop\\Estudos\\Java\\NIO\\testeCriacao.txt";
+		Path arquivo = Paths.get(path);
+		if(!Files.exists(arquivo))
+			Files.createFile(arquivo);
 	}
 }
