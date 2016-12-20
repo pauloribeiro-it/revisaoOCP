@@ -43,6 +43,6 @@ public class NIO {
 	
 	public static void delete() throws IOException{
 		String caminho = "C:\\Users\\Paulo\\Desktop\\Estudos\\Java\\NIO\\teste.txt";
-		Files.delete(Paths.get(caminho));
+		Files.deleteIfExists(Paths.get(caminho));
 	}
 }
