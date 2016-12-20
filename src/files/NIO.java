@@ -5,11 +5,14 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 public class NIO {
 	public static void main(String[] args) throws IOException {
 //		verificaExistenciaArquivo();
-		createFile();
+//		createFile();
+//		copy();
+		delete();
 	}
 	
 	public static void verificaExistenciaArquivo(){
@@ -28,5 +31,18 @@ public class NIO {
 		Path arquivo = Paths.get(path);
 		if(!Files.exists(arquivo))
 			Files.createFile(arquivo);
+	}
+	
+	public static void copy() throws IOException{
+		String caminhoArquivoExistente = "C:\\Users\\Paulo\\Desktop\\Estudos\\Java\\NIO\\testeCriacao.txt";
+		String caminhoCopiaArquivo = "C:\\Users\\Paulo\\Desktop\\Estudos\\Java\\NIO\\testeCriacaoCopia.txt";
+		Path arquivoExistente = Paths.get(caminhoArquivoExistente);
+		Path arquivoCopia = Paths.get(caminhoCopiaArquivo);
+		Files.copy(arquivoExistente, arquivoCopia,StandardCopyOption.REPLACE_EXISTING);
+	}
+	
+	public static void delete() throws IOException{
+		String caminho = "C:\\Users\\Paulo\\Desktop\\Estudos\\Java\\NIO\\teste.txt";
+		Files.delete(Paths.get(caminho));
 	}
 }
