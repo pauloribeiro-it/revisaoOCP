@@ -12,8 +12,9 @@ public class NIO {
 		// verificaExistenciaArquivo();
 		// createFile();
 		// copy();
-//		delete();
-		move();
+		// delete();
+		// move();
+		normalizePath();
 	}
 
 	public static void verificaExistenciaArquivo() {
@@ -59,4 +60,20 @@ public class NIO {
 		Files.move(arquivoOrigem, arquivoDestino,
 				StandardCopyOption.REPLACE_EXISTING);
 	}
+
+	public static void normalizePath() throws IOException {
+		Files.createDirectories(Paths.get("Build_Project"));
+		Files.createDirectories(Paths.get("Build_Project\\scripts"));
+		Files.createDirectories(Paths.get("My_Project"));
+		Files.createDirectories(Paths.get("My_Project\\source"));
+		
+		String buildProject = "/Build_Project/scripts";
+		String upTwoDirectories = "../..";
+		String myProject = "/My_Project/source";
+		Path path = Paths.get(buildProject, upTwoDirectories, myProject);
+		
+		System.out.println("Original: " + path);
+		System.out.println("Normalized: " + path.normalize());
+	}
+
 }
