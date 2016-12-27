@@ -48,7 +48,7 @@ public class FileVisitorTeste2 extends SimpleFileVisitor<Path> {
 	}
 
 	private static void createFile(Path file) throws IOException {
-		if (!Files.exists(file)) {
+		if (Files.notExists(file)) {
 			Files.createFile(file);
 		}
 	}
