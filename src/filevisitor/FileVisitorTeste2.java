@@ -14,6 +14,11 @@ public class FileVisitorTeste2 extends SimpleFileVisitor<Path> {
 
 	public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) {
 		System.out.println("pre: " + dir);
+		String name = dir.getFileName().toString();
+		if(name.equals("grandchild")){
+			return FileVisitResult.SKIP_SIBLINGS; //Interrompe a busca no mesmo nível e nos níveis abaixo
+//			return FileVisitResult.SKIP_SIBLINGS; //Interrompe a busca nos níveis abaixo
+		}
 		return FileVisitResult.CONTINUE;
 	}
 
