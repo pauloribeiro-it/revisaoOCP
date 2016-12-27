@@ -16,8 +16,8 @@ public class FileVisitorTeste2 extends SimpleFileVisitor<Path> {
 		System.out.println("pre: " + dir);
 		String name = dir.getFileName().toString();
 		if(name.equals("grandchild")){
-			return FileVisitResult.SKIP_SIBLINGS; //Interrompe a busca no mesmo nível e nos níveis abaixo
-//			return FileVisitResult.SKIP_SIBLINGS; //Interrompe a busca nos níveis abaixo
+			return FileVisitResult.SKIP_SUBTREE; //Interrompe a busca no mesmo nï¿½vel e nos nï¿½veis abaixo
+//			return FileVisitResult.SKIP_SIBLINGS; //Interrompe a busca nos nï¿½veis abaixo
 		}
 		return FileVisitResult.CONTINUE;
 	}
@@ -48,7 +48,7 @@ public class FileVisitorTeste2 extends SimpleFileVisitor<Path> {
 	}
 
 	private static void createFile(Path file) throws IOException {
-		if (Files.exists(file)) {
+		if (!Files.exists(file)) {
 			Files.createFile(file);
 		}
 	}
