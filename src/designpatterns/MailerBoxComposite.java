@@ -1,9 +1,9 @@
 package designpatterns;
 
-public class MailerBox implements Box,Mailer{
+public class MailerBoxComposite implements Box,Mailer{
 	private Box box;
 	
-	public MailerBox(Box box) {
+	public MailerBoxComposite(Box box) {
 		this.box = box;
 	}
 	
