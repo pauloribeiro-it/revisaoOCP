@@ -19,6 +19,10 @@ public class RentalGeneric<T> {
 	public void returnRental(T returnedThing) {
 		rentalPool.add(returnedThing);
 	}
+	
+	public int getMaxNum() {
+		return maxNum;
+	}
 }
 
 class TestRental {
