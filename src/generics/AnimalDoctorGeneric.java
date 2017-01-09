@@ -5,9 +5,14 @@ import java.util.List;
 
 public class AnimalDoctorGeneric {
 	public void addAnimal(List<? extends Animal> animals) {
-//		animals.add(new Dog()); must not add anything
-		animals.get(0).checkup();
+//		animals.add(new Dog()); must not add anything. "?" is generic, so, the list can be a list of Cat or Dog. Thus, you
+								//can't add a Dog in a Cat list and vice-versa
 	}
+	
+	public void addAnimalSafely(List<? super Dog> animals){
+		animals.add(new Dog());
+	}
+	
 	public static void main(String[] args) {
 		List<Dog> animals = new ArrayList<Dog>();
 		animals.add(new Dog());
@@ -19,6 +24,7 @@ public class AnimalDoctorGeneric {
 		//doc.addAnimal(animals); It will break if addAnimal signature is addAnimal(List<Animal> animals)
 		doc.addAnimal(animals);
 		doc.addAnimal(cats);
+		doc.addAnimalSafely(animals);
 	}
 }
 
@@ -30,6 +36,9 @@ class Dog extends Animal {
 	public void checkup() {
 		// implement Dog-specific code
 		System.out.println("Dog checkup");
+	}
+	public void dogCheckup(){
+		
 	}
 }
 
