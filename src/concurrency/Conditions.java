@@ -10,15 +10,11 @@ public class Conditions {
 		Condition blockingPoolA = lock.newCondition();
 		lock.lock();
 		try {
-			blockingPoolA.await(); // "wait" here
-			// lock will be reacquired
-			// work
-		} catch (InterruptedException ex) {
-			// interrupted during await()
-		} finally {
-			// to ensure we unlock
+			blockingPoolA.await(); //wait
+			blockingPoolA.signal();//notify
+		} catch (InterruptedException ex) {}
+		finally {
 			lock.unlock();
-			// must manually release
 		}
 	}
 }
