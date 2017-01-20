@@ -1,10 +1,8 @@
 package concurrency;
 
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class RandomInitRecursiveAction extends RecursiveAction {
 	private static final long serialVersionUID = 8834142956574891011L;
