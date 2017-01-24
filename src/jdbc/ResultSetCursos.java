@@ -1,13 +1,22 @@
 package jdbc;
 
+import static java.lang.System.out;
+
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import static java.lang.System.out;
+import java.sql.Statement;
 
 public class ResultSetCursos {
 	public static void main(String[] args) throws Exception {
 		Connection con = JDBCConnection.getConnection();
+//		verifyResultSetCursor(con);
+		moveResultSet(con);
+		JDBCConnection.closeConnection(con);
+	}
+	
+	public static void verifyResultSetCursor(Connection con) throws Exception{
 		DatabaseMetaData dbmd = con.getMetaData();
 		if (dbmd.supportsResultSetType(ResultSet.TYPE_FORWARD_ONLY)) {
 			out.print("Supports TYPE_FORWARD_ONLY");
@@ -27,6 +36,19 @@ public class ResultSetCursos {
 				out.println("Supports CONCUR_UPDATABLE");
 			}
 		}
-		JDBCConnection.closeConnection(con);
+	}
+	
+	public static void moveResultSet(Connection con) throws Exception{
+		try(Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery("select * from person")){
+			rs.absolute(2);
+			System.out.println("Second is: "+rs.getString("name"));
+			rs.next();
+			System.out.println("Third is: "+rs.getString("name"));
+			rs.relative(-2);
+			System.out.println("First is: "+rs.getString("name"));
+			rs.last();
+			System.out.println("Last is: "+rs.getString("name"));
+		}
 	}
 }
