@@ -7,8 +7,9 @@ import java.sql.Statement;
 public class UpdateResultSet {
 	public static void main(String[] args) throws Exception {
 		Connection con = JDBCConnection.getConnection();
-//		updateResultSet(con);
-		deleteLastRow(con);
+//		updateResultSet(con);	
+//		deleteLastRow(con);
+		insertNewRow(con);
 		JDBCConnection.closeConnection(con);
 	}
 
@@ -33,6 +34,26 @@ public class UpdateResultSet {
 			if (rs.last()) {
 				rs.deleteRow();
 				System.out.println("Last row deleted");
+				rs.getString(rs.getString("name"));
+			}
+			con.commit();
+		}
+	}
+	
+	public static void insertNewRow(Connection con) throws Exception{
+		try (Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+				ResultSet rs = st.executeQuery("select * from person")) {
+			while(rs.next()){
+				System.out.println("Name: "+rs.getString("name"));
+				if(rs.getInt("id") == 2){
+					rs.moveToInsertRow();
+					rs.updateInt("id", 10);
+					rs.updateString("name", "last person");
+					rs.updateInt("age", 999);
+					rs.insertRow();
+					rs.moveToCurrentRow();
+					System.out.println("Insert!");
+				}
 			}
 			con.commit();
 		}
