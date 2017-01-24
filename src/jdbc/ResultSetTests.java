@@ -12,12 +12,12 @@ public class ResultSetTests {
 	
 	public static void main(String[] args) throws Exception{
 		Connection con = JDBCConnection.getConnection();
-		updatePauloName(con);
-		showRows(con);
+//		updatePauloName(con);
+//		showRows(con);
 		JDBCConnection.closeConnection(con);
 	}
 	
-	private static void updatePauloName(Connection con)throws Exception{
+	public static void updatePauloName(Connection con)throws Exception{
 		PreparedStatement st = con.prepareStatement(UPDATE_PAULO);
 		st.setString(1, "Paulo Ribeiro");
 		st.setString(2, "paulo");
@@ -28,7 +28,7 @@ public class ResultSetTests {
 		JDBCConnection.closeStatement(st);
 	}
 	
-	private static void showRows(Connection con) throws Exception{
+	public static void showRows(Connection con) throws Exception{
 		PreparedStatement st = con.prepareStatement(SELECT_PERSON);
 		ResultSet rs = null;
 		if(st.execute()){
