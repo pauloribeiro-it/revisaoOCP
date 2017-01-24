@@ -4,14 +4,13 @@ import static java.lang.System.out;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class ResultSetCursos {
+public class ResultSetCursor {
 	public static void main(String[] args) throws Exception {
 		Connection con = JDBCConnection.getConnection();
-//		verifyResultSetCursor(con);
+		verifyResultSetCursor(con);
 		moveResultSet(con);
 		JDBCConnection.closeConnection(con);
 	}
