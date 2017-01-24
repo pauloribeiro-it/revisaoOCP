@@ -19,6 +19,7 @@ public class JDBCConnection {
 		Class.forName("com.mysql.jdbc.Driver"); // Just in the cause of the
 												// driver is below JDBC 4
 		Connection con = DriverManager.getConnection(URL_CONNECTION, USER_NAME, PASSWORD);
+		con.setAutoCommit(false);
 		return con;
 	}
 
